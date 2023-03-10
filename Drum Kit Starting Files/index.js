@@ -4,3 +4,4 @@ for (let i = 0; i < document.querySelectorAll("button.drum").length; i++) {
         alert("I got clicked");
     });
 }
+
