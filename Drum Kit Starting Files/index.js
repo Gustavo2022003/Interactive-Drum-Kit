@@ -7,15 +7,22 @@ for (let i = 0; i < document.querySelectorAll("button.drum").length; i++) {
         // Criando uma variável e armazenando o objeto que está sendo pressionado.
         var buttonInnerHTML = this.innerHTML;
 
-        // Chamando a função playSound com o objeto que está sendo pressionado
+        // Chamando a função playSound e passando a tecla pressionada como parametro
         playSound(buttonInnerHTML);
+
+        // Chamando a função buttonAnimation e passando a tecla pressionada como parametro
+        buttonAnimation(buttonInnerHTML);
 
     });
 }
 
 // Criando um eventListener em toda a página para detectar qual tecla está sendo pressionada
 document.addEventListener("keydown", function(event){
-    playSound(event.key); // Chamando a função de playSound e dando como parametro a tecla pressionada
+    // Chamando a função de playSound e dando como parametro a tecla pressionada
+    playSound(event.key);
+
+    // Chamando a função de buttonAnimation e dando como parametro a tecla pressionada
+    buttonAnimation(event.key)
 });
 
 
@@ -70,4 +77,16 @@ function playSound(key){
         default:
             console.log(`Botão ${key} pressionado`);
     }
+}
+
+function buttonAnimation(currentKey) {
+
+    buttonPressed = document.querySelector("." + currentKey);
+
+    buttonPressed.classList.add("pressed");
+
+    setTimeout(function() {
+        buttonPressed.classList.remove("pressed");
+    }, 100);
+
 }
